@@ -4,17 +4,14 @@
       <img class="mr-2 rounded" src="<%= gravatar_url(task.user, { size: 50 }) %>" alt="">
       <div class="media-body">
         <div>
-          <%= link_to task.user.name, user_path(task.user) %> <span class="text-muted">posted at <%= task.created_at %></span>
-        </div>
-        <div>
-          <p class="mb-0"><%= task.content %></p>
+          <p class="mb-0"><%= link_to task.id, task %> : <%= task.content %></p>
           <p class="mb-0"><%= task.status %></p>
         </div>
-        <span>
+        <div>
           <% if current_user == task.user %>
             <%= link_to "Delete", task, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-sm' %>
           <% end %>
-        </span>
+        </div>
       </div>
     </li>
   <% end %>
