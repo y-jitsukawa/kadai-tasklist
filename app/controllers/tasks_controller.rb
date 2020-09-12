@@ -1,7 +1,7 @@
 class TasksController < ApplicationController
     before_action :set_task, only: [:show, :edit, :update, :destroy]
     before_action :require_user_logged_in
-    before_action :correct_user, only: [:new, :edit, :destroy]
+    before_action :correct_user, only: [:edit, :destroy]
     
     def index
             @task = current_user.tasks.build
@@ -22,7 +22,7 @@ class TasksController < ApplicationController
            flash[:success] = 'Task が正常に投稿されました'
            redirect_to @task
         else
-           @task = current_user.tasks.build(task_params)
+           @task = tasks.build(task_params)
            flash.now[:danger] = 'Task が投稿されませんでした'
            render :new
         end
