@@ -1,11 +1,10 @@
-<% if logged_in? %>
-    <div class="col-sm-8">
-      <%= render 'tasks/tasks', tasks: @tasks %>
-    </div>
-  </div>
-<% else %>
+<% unless logged_in? %>
     <div class="text-center">
       <h1>Welcome to the TaskList</h1>
       <%= link_to 'Sign up now!', signup_path, class: 'btn btn-lg btn-primary' %>
+    </div>
+<% else %>
+    <div class="col-sm-8">
+      <%= render 'tasks/tasks', tasks: @tasks %>
     </div>
 <% end %>
